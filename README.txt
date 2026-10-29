@@ -11,7 +11,7 @@ Updates:
 - Added keyboard-friendly navigation and gallery viewer.
 - Gallery viewer supports Escape, Left/Right arrows and returns keyboard focus.
 - Desktop cursor effects respect reduced-motion preferences and keep a native-pointer fallback.
-- Contact form clearly prepares a message in the visitor's email app; no backend is configured.
+- Contact form posts to FormSubmit and shows inline submission status.
 
 Verification:
 13 HTML pages checked at 1440, 768, 390 and 320 pixels wide.
@@ -25,3 +25,12 @@ The rhode project includes all six slides and the original PDF.
 Academic brand analyses are labeled as coursework, not commissioned client work.
 
 Latest additions: My Boy Boone academic case study with both original PDFs; supplied transparent circular profile picture on homepage. Campaign metrics are clearly labeled proposed targets.
+
+DIRECT EMAIL FORM SETUP
+1. Deploy the website to your public HTTPS domain.
+2. Submit the contact form once from that domain.
+3. Jenna must open the FormSubmit activation email and confirm the form.
+4. Submit another test after activation and verify receipt in her inbox (including spam).
+Form submissions are processed by the third-party FormSubmit service.
+No email password or API key is embedded in the website.
+Delivery has not been live-tested or activated by the website builder.
