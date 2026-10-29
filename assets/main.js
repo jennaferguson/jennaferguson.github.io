@@ -15,13 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const year = document.getElementById('yr');
   if (year) year.textContent = new Date().getFullYear();
 
-  // Use a native form POST: no AJAX request or CORS preflight.
-  document.getElementById('contactForm')?.addEventListener('submit', e => {
-    const form = e.currentTarget;
-    if (form.elements['_honey']?.value) { e.preventDefault(); return; }
-    const status = document.getElementById('form-status');
-    if (status) status.textContent = 'Opening the secure submission page...';
-  });
+  // Contact form submits directly to Formspree using its HTML form endpoint.
 
   const filters = [...document.querySelectorAll('.filters button')];
   filters.forEach(button => {

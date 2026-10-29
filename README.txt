@@ -34,3 +34,7 @@ DIRECT EMAIL FORM SETUP
 Form submissions are processed by the third-party FormSubmit service.
 No email password or API key is embedded in the website.
 Delivery has not been live-tested or activated by the website builder.
+
+TYPOGRAPHY/MOBILE REVIEW: See TYPOGRAPHY-MOBILE-REVIEW.md for the complete audit, implemented fixes, test scope and limitations.
+
+CORS FIX: Contact form now uses a native HTTPS POST, not AJAX. The visitor navigates to FormSubmit for submission/verification. Confirm the activation email and test actual delivery after deployment. No live email delivery has been verified.

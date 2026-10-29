@@ -1,0 +1,32 @@
+FORMATTING AND TYPOGRAPHY REVIEW
+
+All 13 HTML pages tested through a local HTTP server at widths:
+320, 375, 390, 430, 768, 1024, 1280, 1440 and 1920 pixels.
+
+Changes:
+- Natural capitalization instead of forced uppercase for headings and controls.
+- Consistent capitalization of section labels.
+- Explicit spaces at mixed-font boundaries.
+- Increased line height and side clearance for script and italic text.
+- Script headline accents placed on separate lines.
+- Preserved responsive grids, project galleries, transparent portrait and no-heart styling.
+- Included native contact form POST fix; no AJAX email submission.
+- Updated stylesheet/script version strings to avoid stale cached assets.
+
+Checks passed:
+- No horizontal page overflow at tested widths.
+- No missing local files or broken images.
+- No JavaScript exceptions.
+- No intersecting text-run boxes within headings.
+- Homepage, contact and Boone page also checked at 200 percent text size.
+- Mobile menu, category filters, Boone card, rhode six-slide gallery and native form POST.
+
+Limitations:
+Google Fonts could not be downloaded in this test environment. Browser checks used fallback fonts.
+Extra spacing was added for the intended script and italic fonts, but their final glyph rendering
+must still be confirmed on the deployed website. Source artwork and PDFs were not altered.
+Email delivery was not live-tested; recipient activation may still be required.
+
+Deployment:
+Upload the contents of this folder to the existing repository root. Preserve the assets and projects
+folder structure. Hard-refresh the deployed site with Ctrl+Shift+R after deployment.
