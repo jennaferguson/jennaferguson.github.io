@@ -1,0 +1,1 @@
+Replace contact.html and assets/main.js in your existing website repository. Keep all other files unchanged. After deployment, hard-refresh with Ctrl+Shift+R. Submit the form; it now opens the FormSubmit submission page instead of using AJAX. Confirm the activation email if requested, then test actual inbox delivery. Delivery is not yet verified. No email app is used.

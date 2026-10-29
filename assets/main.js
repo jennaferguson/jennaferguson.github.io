@@ -15,53 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const year = document.getElementById('yr');
   if (year) year.textContent = new Date().getFullYear();
 
-  document.getElementById('contactForm')?.addEventListener('submit', async e => {
-    e.preventDefault();
+  // Use a native form POST: no AJAX request or CORS preflight.
+  document.getElementById('contactForm')?.addEventListener('submit', e => {
     const form = e.currentTarget;
-    if (!form.reportValidity()) return;
+    if (form.elements['_honey']?.value) { e.preventDefault(); return; }
     const status = document.getElementById('form-status');
-    const button = form.querySelector('button[type="submit"]');
-    const data = new FormData(form);
-    if (data.get('_honey')) return;
-    button.disabled = true;
-    button.textContent = 'Sending...';
-    status.textContent = 'Sending your message...';
-    status.dataset.state = 'pending';
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 20000);
-    try {
-      const response = await fetch('https://formsubmit.co/ajax/jferg1103@gmail.com', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-        signal: controller.signal,
-        body: JSON.stringify({
-          name: data.get('name'), email: data.get('email'),
-          topic: data.get('topic'), message: data.get('message'),
-          _replyto: data.get('email'),
-          _subject: 'Portfolio inquiry: ' + data.get('topic'),
-          _template: 'table', _honey: ''
-        })
-      });
-      const result = await response.json();
-      const message = String(result.message || '');
-      if (/activat|confirm your email/i.test(message)) {
-        status.textContent = 'The contact form is awaiting email verification. Please try again after activation or use the email link on this page.';
-        status.dataset.state = 'error';
-      } else if (!response.ok || (result.success !== true && result.success !== 'true')) {
-        throw new Error('Submission was not accepted.');
-      } else {
-        status.textContent = 'Thank you! Your message has been submitted successfully.';
-        status.dataset.state = 'success';
-        form.reset();
-      }
-    } catch (error) {
-      status.textContent = 'Your message could not be sent. Please check your connection and try again, or use the email link on this page. Your message is still here.';
-      status.dataset.state = 'error';
-    } finally {
-      clearTimeout(timeout);
-      button.disabled = false;
-      button.textContent = 'Send Message';
-    }
+    if (status) status.textContent = 'Opening the secure submission page...';
   });
 
   const filters = [...document.querySelectorAll('.filters button')];
